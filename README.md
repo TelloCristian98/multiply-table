@@ -1,6 +1,12 @@
 # multiply_tables
 
-A new Flutter project.
+Examen Parcial - Desarrollo de Aplicaciones Moviles
+05 de Junio de 2024
+
+Relizado por:
+- Cristian Tello
+- Camila Morales
+- Mateo Barriga
 
 ## Getting Started
 
