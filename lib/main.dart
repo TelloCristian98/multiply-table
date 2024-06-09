@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Screens/PracticeScreen.dart';
+import 'package:multiply_tables/Screens/MainScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,12 +12,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      //QUITAR EL DUBUG
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: PracticeScreen(tableNumber: tableNumber),
+      home: Mainscreen(),
     );
   }
 }

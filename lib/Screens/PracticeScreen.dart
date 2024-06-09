@@ -59,7 +59,14 @@ class _PracticeScreenState extends State<PracticeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Practice Multiplication Table ${widget.tableNumber}'),
-      ),
+        backgroundColor: Color.fromARGB(255, 181, 164, 237),
+        centerTitle: true,
+        titleTextStyle: TextStyle(
+          fontFamily: 'CustomFont', 
+          fontSize: 20, 
+          fontWeight: FontWeight.bold,
+          ),
+        ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -68,11 +75,26 @@ class _PracticeScreenState extends State<PracticeScreen> {
               'What is ${widget.tableNumber} x $_randomMultiplier?',
               style: TextStyle(fontSize: 24),
             ),
-            TextField(
-              controller: _answerController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Enter your answer',
+
+            SizedBox(height: 30),
+
+            Center(
+              child: Container(
+                width: 500,
+                child: TextField(
+                  controller: _answerController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: 'Enter your answer',
+                    labelStyle: TextStyle(
+                      fontSize: 18,
+                    ),
+                    border: OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color.fromARGB(255, 181, 164, 237)), // Color del borde cuando está enfocado
+                    ),
+                  ),
+                ),
               ),
             ),
             SizedBox(height: 20),
@@ -80,16 +102,19 @@ class _PracticeScreenState extends State<PracticeScreen> {
               onPressed: _checkAnswer,
               child: Text('Submit'),
             ),
+
             SizedBox(height: 20),
             Text(
               _feedbackMessage,
               style: TextStyle(fontSize: 18, color: Colors.red),
             ),
+
             SizedBox(height: 20),
             Text(
               'Correct Answers: $_correctAnswers',
               style: TextStyle(fontSize: 18, color: Colors.green),
             ),
+
             Text(
               'Wrong Answers: $_wrongAnswers',
               style: TextStyle(fontSize: 18, color: Colors.red),
