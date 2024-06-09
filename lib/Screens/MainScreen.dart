@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multiply_tables/Screens/HomeScreen.dart';
 import 'package:multiply_tables/Screens/PracticeScreen.dart';
 
 class Mainscreen extends StatefulWidget {
@@ -35,7 +36,7 @@ class _MainscreenState extends State<Mainscreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("TABLAS DE MULTIPLICAR"),
+        title: Text("MULTIPLICATION TABLES"),
         backgroundColor: Color.fromARGB(255, 181, 164, 237),
         centerTitle: true,
         titleTextStyle: TextStyle(
@@ -44,11 +45,17 @@ class _MainscreenState extends State<Mainscreen> {
           fontWeight: FontWeight.bold,
         ),
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            //Tablas de multiplicar
+
+            //Integrantes
+            SizedBox(height: 20),
+
             Center(
               child: Container(
                 width: 500, // Ancho específico del Container
@@ -59,7 +66,7 @@ class _MainscreenState extends State<Mainscreen> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
-                  'Desarrollado por:\nMateo Barriga, Camila Morales, Cristian Tello',
+                  'Developer by:\nMateo Barriga, Camila Morales, Cristian Tello',
                   style: TextStyle(
                     fontSize: 18, 
                     fontWeight: FontWeight.bold, 
@@ -69,7 +76,23 @@ class _MainscreenState extends State<Mainscreen> {
                 ),
               ),
             ),
+
+            SizedBox(height: 50),
+
+            Center(
+              child: Container(
+                width: 300, // Ancho específico del botón
+                child: ElevatedButton(onPressed: (){
+                //Conexion de pantallas :D
+                Navigator.push(context, 
+                  MaterialPageRoute(builder: (context)=> const HomeScreen(),),);
+              },child: const Text("Multiplication Tables"),
+         ),
+              ),
+            ),
+
             SizedBox(height: 20),
+
             Center(
               child: Container(
                 width: 300, // Ancho específico del campo de texto
@@ -77,7 +100,7 @@ class _MainscreenState extends State<Mainscreen> {
                   controller: _tableNumberController,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    labelText: 'Ingrese el número de la tabla',
+                    labelText: 'Enter the table number',
                     labelStyle: TextStyle(
                       fontSize: 18, 
                     ),
@@ -106,13 +129,13 @@ class _MainscreenState extends State<Mainscreen> {
                     } else {
                       // Validación de número válido
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Por favor, ingrese un número válido')),
+                        const SnackBar(content: Text('Please enter a valid number')),
                       );
                     }
                   },
                   child: Text(_tableNumber != null
-                      ? "Ir a practicar la tabla del $_tableNumber"
-                      : "Ir a practicar la tabla"),
+                      ? "Go practice the table $_tableNumber"
+                      : "Go practice the table"),
                 ),
               ),
             ),
