@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:multiply_tables/Screens/tableScreen.dart';
+import 'package:flutter/services.dart';
+import 'package:multiply_tables/Screens/tableScreen.dart'; // Importa la librería de servicios
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key});
@@ -36,38 +37,34 @@ class HomeScreenState extends State<HomeScreen> {
           fontWeight: FontWeight.bold,
         ),
       ),
-      
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-
             Center(
-              child:Container(
-              width: 500, // Ancho específico del TextField
-              child: TextField(
-                controller: _controller,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  labelText: "Enter a number",
-                  labelStyle: TextStyle(
-                    fontSize: 18,
-                  ),
-                  border: OutlineInputBorder(),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color.fromARGB(255, 181, 164, 237),
+              child: Container(
+                width: 500,
+                child: TextField(
+                  controller: _controller,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly], // Esto permite solo números
+                  decoration: InputDecoration(
+                    labelText: "Enter a number",
+                    labelStyle: TextStyle(
+                      fontSize: 18,
                     ),
+                    border: OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color.fromARGB(255, 181, 164, 237),
+                      ),
+                    ),
+                    alignLabelWithHint: true,
                   ),
-                  // Centrar el texto del label
-                  alignLabelWithHint: true,
                 ),
               ),
             ),
-            ),
-
             const SizedBox(height: 20),
-
             ElevatedButton(
               onPressed: () => _navigateToTableScreen(context),
               child: const Text("View table"),
